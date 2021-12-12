@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500;700&display=swap');
+
+*, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Mono', monospace;
+}
+
+html, body{
+  height: 100%;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--grayish-cyan-200);
+}
+
+:root{
+  --strong-cyan: hsl(172, 67%, 45%);
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --grayish-cyan-400: hsl(186, 14%, 43%);
+  --grayish-cyan-300: hsl(184, 14%, 56%);
+  --grayish-cyan-200: hsl(185, 41%, 84%);
+  --grayish-cyan-100: hsl(189, 41%, 97%);
+  --white: hsl(0, 0%, 100%);
+}
+
+h2{
+  font-size: 16px;
+  color: var(--grayish-cyan-300);
+}
+

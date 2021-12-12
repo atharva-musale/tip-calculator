@@ -1,0 +1,6 @@
+<div class="input-container">
+  <div class="icon">
+    <img [src]="path" class="input-icon" alt="input-icon">
+  </div>
+  <input #inputElement (keyup)="onKeyDown(inputElement)" type="number">
+</div>

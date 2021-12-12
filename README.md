@@ -1,27 +1,33 @@
-# TipCalculator
+# Tip calculator app
+## Layout
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
+The designs were created to the following widths:
 
-## Development server
+- Mobile: 375px
+- Desktop: 1440px
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Colors
 
-## Code scaffolding
+### Primary
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Strong cyan: hsl(172, 67%, 45%)
 
-## Build
+### Neutral
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Very dark cyan: hsl(183, 100%, 15%)
+- Dark grayish cyan: hsl(186, 14%, 43%)
+- Dark grayish cyan: hsl(184, 14%, 56%)
+- Light grayish cyan: hsl(185, 41%, 84%)
+- Light grayish cyan: hsl(189, 41%, 97%)
+- White: hsl(0, 0%, 100%)
 
-## Running unit tests
+## Typography
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Body Copy
 
-## Running end-to-end tests
+- Font size (form inputs): 24px
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Font
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Family: [Space Mono](https://fonts.google.com/specimen/Space+Mono)
+- Weights: 400, 500, 700

@@ -1,0 +1,38 @@
+/* remove arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.input-container{
+  position: relative;
+}
+
+.input-icon{
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1rem;
+}
+
+.input-container input{
+  font-size: 20px;
+  font-weight: 700;
+  width: 100%;
+  border: none;
+  padding: 0.5rem 1rem;
+  text-align: right;
+  color: var(--very-dark-cyan);
+  background-color: var(--grayish-cyan-100);
+}
+.input-container input:focus{
+  outline-color: var(--strong-cyan);
+}

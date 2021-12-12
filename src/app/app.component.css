@@ -1,0 +1,35 @@
+.container{
+  background-color: white;
+  width: 60vw;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.container h2{
+  margin-bottom: 0.5rem;
+}
+
+.container{
+  display: flex;
+}
+
+.left-side{
+  flex-basis: 50%;
+  padding-right: 2rem;
+}
+
+.right-side{
+  flex-basis: 50%;
+}
+
+.select-tip-container{
+  margin: 2rem 0;
+
+}
+
+.tip-buttons-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+}
