@@ -51,7 +51,7 @@
   border: none;
   border-radius: 0.3rem;
   text-transform: uppercase;
-  transition: all ease-in-out 400ms;
+  transition: all ease-in-out 300ms;
 }
 .reset:hover{
   cursor: pointer;

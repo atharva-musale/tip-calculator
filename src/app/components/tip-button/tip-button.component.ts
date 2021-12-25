@@ -9,7 +9,7 @@ import { TipServiceService } from 'src/app/services/tip-service.service';
 export class TipButtonComponent implements OnInit {
 
   @Input() value!: string;
-  @Input() type!: string;
+  public type: string = 'normal';
 
   public currentType: string;
 
@@ -24,11 +24,11 @@ export class TipButtonComponent implements OnInit {
   setActive(){
     if(this.currentType != 'active'){
       this.currentType = 'active'
+      this._tipService.updatePercentTip(+this.value);
     }
     else{
       this.currentType = this.type;
     }
-    this._tipService.updatePercentTip(+this.value);
   }
 
 }
