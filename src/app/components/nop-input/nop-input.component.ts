@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TipServiceService } from 'src/app/services/tip-service.service';
 
 @Component({
@@ -6,21 +6,27 @@ import { TipServiceService } from 'src/app/services/tip-service.service';
   templateUrl: './nop-input.component.html',
   styleUrls: ['./nop-input.component.css']
 })
-export class NopInputComponent implements OnInit {
-
+export class NopInputComponent {
+  /**
+   * path of the icon to be displayed in the input
+   */
   @Input() path!: string;
 
+  /**
+   * to store value of the input field
+   */
   public inputValue: number;
 
   constructor(private _tipService: TipServiceService) {
     this.inputValue = 1;
   }
 
-  ngOnInit(): void {
-
-  }
-
-  onKeyDown(inputElement: any): void{
+  /**
+   * Sets the input value and updates the number of people in service
+   *
+   * @param inputElement
+   */
+  public onKeyDown(inputElement: any): void{
     this.inputValue = inputElement.value;
     if(this.inputValue == 0){
       this.inputValue = 1;
