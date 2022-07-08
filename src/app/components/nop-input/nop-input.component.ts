@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TipServiceService } from 'src/app/services/tip-service.service';
 
 @Component({
@@ -13,25 +14,21 @@ export class NopInputComponent {
   @Input() path!: string;
 
   /**
-   * to store value of the input field
+   * form-control for the nop-input form
    */
-  public inputValue: number;
+  public numberOfPeopleInputForm: FormGroup;
 
-  constructor(private _tipService: TipServiceService) {
-    this.inputValue = 1;
+  constructor(private _tipService: TipServiceService, private _formBuilder: FormBuilder,) {
+    this.numberOfPeopleInputForm = this._formBuilder.group({
+      numberOfPeople: [1, Validators.required]
+    });
   }
 
   /**
-   * Sets the input value and updates the number of people in service
-   *
-   * @param inputElement
+   * Updates the number of people in service
    */
-  public onKeyDown(inputElement: any): void{
-    this.inputValue = inputElement.value;
-    if(this.inputValue == 0){
-      this.inputValue = 1;
-    }
-    this._tipService.updateNumberOfPeople(this.inputValue);
+  public onKeyDown() {
+    this._tipService.updateNumberOfPeople(this.numberOfPeopleInputForm.value.numberOfPeople);
   }
 
 }

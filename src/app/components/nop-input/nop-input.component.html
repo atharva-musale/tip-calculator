@@ -1,7 +1,7 @@
-<div class="input-container">
+<form [formGroup]="numberOfPeopleInputForm" class="input-container">
   <div class="icon">
     <img [src]="path" class="input-icon" alt="input-icon">
   </div>
-  <input #inputElement (keyup)="onKeyDown(inputElement)" type="number">
-</div>
+  <input (keyup)="onKeyDown()" type="number" formControlName="numberOfPeople" placeholder="1">
+</form>
 

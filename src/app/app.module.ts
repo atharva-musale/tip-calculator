@@ -8,6 +8,7 @@ import { TipButtonComponent } from './components/tip-button/tip-button.component
 import { DisplayCardComponent } from './components/display-card/display-card.component';
 import { NopInputComponent } from './components/nop-input/nop-input.component';
 import { CustomTipComponent } from './components/custom-tip/custom-tip.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,10 @@ import { CustomTipComponent } from './components/custom-tip/custom-tip.component
     CustomTipComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

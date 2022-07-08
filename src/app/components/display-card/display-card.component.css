@@ -58,3 +58,16 @@
   background-color: var(--grayish-cyan-200);
   color: var(--grayish-cyan-400);
 }
+
+@media screen and (min-width: 540px) and (max-width: 630px) {
+  .tip-per-person{
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+
+  .total-per-person{
+    flex-direction: column;
+    align-items: center;
+  }
+}

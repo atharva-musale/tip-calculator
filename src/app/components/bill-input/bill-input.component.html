@@ -1,6 +1,6 @@
-<div class="input-container">
+<form [formGroup]="billInputForm" class="input-container">
   <div class="icon">
     <img [src]="path" class="input-icon" alt="input-icon">
   </div>
-  <input #inputElement (keyup)="onKeyDown(inputElement)" type="number">
-</div>
+  <input (keyup)="onKeyDown()" type="number" formControlName="billAmount" placeholder="0">
+</form>

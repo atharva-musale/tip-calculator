@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TipServiceService } from 'src/app/services/tip-service.service';
 
 @Component({
@@ -13,22 +14,21 @@ export class BillInputComponent {
   @Input() path!: string;
 
   /**
-   * to store value of the input field
+   * to store form group for bill
    */
-  public inputValue: number;
+  public billInputForm: FormGroup;
 
-  constructor(private _tipService: TipServiceService) {
-    this.inputValue = 0;
+  constructor(private _tipService: TipServiceService, private formBuilder: FormBuilder) {
+    this.billInputForm = this.formBuilder.group({
+      billAmount: [0, Validators.required]
+    });
   }
 
   /**
-   * Sets the input value and updates the total in the service
-   *
-   * @param inputElement
+   * Updates the total in the service
    */
-  public onKeyDown(inputElement: any): void{
-    this.inputValue = inputElement.value;
-    this._tipService.updateTotal(this.inputValue);
+  public onKeyDown() {
+    this._tipService.updateTotal(this.billInputForm.value.billAmount);
   }
 
 }
