@@ -12,7 +12,7 @@
         <app-tip-button (click)="toggle([btn1, btn2, btn4, btn5])" #btn3 value="15"></app-tip-button>
         <app-tip-button (click)="toggle([btn1, btn2, btn3, btn5])" #btn4 value="25"></app-tip-button>
         <app-tip-button (click)="toggle([btn1, btn2, btn3, btn4])" #btn5 value="50"></app-tip-button>
-        <app-custom-tip value="Custom"></app-custom-tip>
+        <app-custom-tip (click)="toggle([btn1, btn2, btn3, btn4, btn5])" value="Custom"></app-custom-tip>
       </div>
     </section>
     <section class="number-of-people-input">

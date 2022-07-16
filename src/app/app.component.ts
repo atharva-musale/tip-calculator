@@ -6,12 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  /**
+   * Title of the app
+   */
   title = 'tip-calculator';
 
-  public toggle(buttons: any[]):void{
-    buttons.forEach((btn)=>{
-      btn.currentType = 'normal';
+  /**
+   * Resets the button state for the list of buttons passed
+   *
+   * @param buttons list of buttons to be toggled
+   */
+  public toggle(buttons: any[]) {
+    console.log(buttons);
+    buttons.forEach( (btn) => {
+      btn.resetButtonState();
     });
   }
-
 }

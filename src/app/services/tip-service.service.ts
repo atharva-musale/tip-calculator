@@ -8,7 +8,7 @@ export class TipServiceService {
   /**
    * Total amount
    */
-  private total: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private total = new BehaviorSubject<number>(0);
   public totalValue = this.total.asObservable();
 
   /**
@@ -23,8 +23,13 @@ export class TipServiceService {
   private tip = new BehaviorSubject<number>(0);
   public tipValue = this.tip.asObservable();
 
-  constructor() {
-  }
+  /**
+   * Subject to reset the form
+   */
+  private resetUi = new BehaviorSubject<boolean>(false);
+  public resetUi$ = this.resetUi.asObservable();
+
+  constructor() {}
 
   /**
    * Updates the total and sends the new value to the subscribers
@@ -60,6 +65,8 @@ export class TipServiceService {
     this.total.next(0);
     this.numberOfPeople.next(1);
     this.tip.next(0);
+
+    this.resetUi.next(true);
   }
 
 }
