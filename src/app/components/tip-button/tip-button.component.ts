@@ -1,6 +1,15 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { TipServiceService } from 'src/app/services/tip-service.service';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import {
+  Subscription,
+} from 'rxjs';
+import {
+  TipServiceService,
+} from 'src/app/services/tip-service.service';
 
 @Component({
   selector: 'app-tip-button',

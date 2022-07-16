@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { TipServiceService } from 'src/app/services/tip-service.service';
+import {
+  Component,
+} from '@angular/core';
+import {
+  TipServiceService,
+} from 'src/app/services/tip-service.service';
 
 @Component({
   selector: 'app-custom-tip',

@@ -1,6 +1,14 @@
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { TipServiceService } from 'src/app/services/tip-service.service';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
+import {
+  Subscription,
+} from 'rxjs';
+import {
+  TipServiceService,
+} from 'src/app/services/tip-service.service';
 
 @Component({
   selector: 'app-display-card',
@@ -8,7 +16,6 @@ import { TipServiceService } from 'src/app/services/tip-service.service';
   styleUrls: ['./display-card.component.css']
 })
 export class DisplayCardComponent implements OnInit, OnDestroy {
-
   /**
    * the list of subscriptions
    */
