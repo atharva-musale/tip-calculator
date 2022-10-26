@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import {
   TipServiceService,
-} from 'src/app/services/tip-service.service';
+} from 'src/app/services/tip-service/tip-service.service';
 
 @Component({
   selector: 'app-custom-tip',

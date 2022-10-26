@@ -12,16 +12,4 @@ export class AppComponent {
    * Title of the app
    */
   title = 'tip-calculator';
-
-  /**
-   * Resets the button state for the list of buttons passed
-   *
-   * @param buttons list of buttons to be toggled
-   */
-  public toggle(buttons: any[]) {
-    console.log(buttons);
-    buttons.forEach( (btn) => {
-      btn.resetButtonState();
-    });
-  }
 }

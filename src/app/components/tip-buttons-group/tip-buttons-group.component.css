@@ -1,0 +1,14 @@
+.tip-buttons-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media screen and (min-width: 540px) and (max-width: 720px) {
+  .tip-buttons-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.7rem;
+  }
+}

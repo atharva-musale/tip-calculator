@@ -9,7 +9,7 @@ import {
 } from 'rxjs';
 import {
   TipServiceService,
-} from 'src/app/services/tip-service.service';
+} from 'src/app/services/tip-service/tip-service.service';
 
 @Component({
   selector: 'app-tip-button',
