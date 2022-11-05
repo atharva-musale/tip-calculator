@@ -9,15 +9,4 @@ export class TipButtonsGroupComponent {
 
   constructor(){}
 
-  /**
-   * Resets the button state for the list of buttons passed
-   *
-   * @param buttons list of buttons to be toggled
-   */
-  public toggle(buttons: any[]) {
-    console.log(buttons);
-    buttons.forEach((btn) => {
-      btn.resetButtonState();
-    });
-  }
 }

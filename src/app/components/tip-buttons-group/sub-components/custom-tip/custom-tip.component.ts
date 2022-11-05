@@ -1,9 +1,11 @@
 import {
   Component,
+  Input,
 } from '@angular/core';
 import {
+  TipButtonsService,
   TipServiceService,
-} from 'src/app/services/tip-service/tip-service.service';
+} from 'src/app/services/index';
 
 @Component({
   selector: 'app-custom-tip',
@@ -12,11 +14,17 @@ import {
 })
 export class CustomTipComponent {
   /**
+   * Index of the button
+   */
+  @Input()
+  public index = 0;
+
+  /**
    * Value in the input
    */
   public customTipPercent = 0;
 
-  constructor(private _tipService: TipServiceService) { }
+  constructor(private _tipService: TipServiceService, private tipButtonsService: TipButtonsService) { }
 
   /**
    * OnBlur event handler
@@ -27,5 +35,6 @@ export class CustomTipComponent {
     console.log("Custom tip value: ", inputElement.value);
     this.customTipPercent = Number(inputElement.value);
     this._tipService.updatePercentTip(this.customTipPercent);
+    this.tipButtonsService.selectButton(this.index);
   }
 }
