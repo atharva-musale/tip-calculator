@@ -1,11 +1,11 @@
-<div class="display-card">
+<div class="display-card" *ngIf="templateData$ | async as templateData">
   <div class="tip-per-person">
     <div class="left">
       <p class="title">Tip Amount</p>
       <p class="subtitle">/ person</p>
     </div>
     <div class="right">
-      <p class="amount">$ {{ tipPerPerson }}</p>
+      <p class="amount">$ {{ templateData.tipPerPerson }}</p>
     </div>
   </div>
   <div class="total-per-person">
@@ -14,10 +14,10 @@
       <p class="subtitle">/ person</p>
     </div>
     <div class="right">
-      <p class="amount">$ {{ totalPerPerson }}</p>
+      <p class="amount">$ {{ templateData.totalPerPerson }}</p>
     </div>
   </div>
   <div class="buttons">
-    <button (click)="onReset()"  class="reset">reset</button>
+    <button (click)="onReset()" class="reset">reset</button>
   </div>
 </div>

@@ -1,7 +1,5 @@
 <form [formGroup]="numberOfPeopleInputForm" class="input-container">
-  <div class="icon">
-    <img [src]="path" class="input-icon" alt="input-icon">
-  </div>
-  <input (keyup)="onKeyDown()" type="number" formControlName="numberOfPeople" placeholder="1">
+  <div class="icon"><img [src]="path" class="input-icon" alt="input-icon"></div>
+  <input (keyup)="onKeyUp()" type="number" formControlName="numberOfPeople" placeholder="1">
 </form>
 

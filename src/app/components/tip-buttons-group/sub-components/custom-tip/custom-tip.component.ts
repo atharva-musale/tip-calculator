@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
 } from '@angular/core';
@@ -10,7 +11,8 @@ import {
 @Component({
   selector: 'app-custom-tip',
   templateUrl: './custom-tip.component.html',
-  styleUrls: ['./custom-tip.component.css']
+  styleUrls: ['./custom-tip.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomTipComponent {
   /**

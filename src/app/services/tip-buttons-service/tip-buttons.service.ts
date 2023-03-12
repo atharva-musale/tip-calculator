@@ -13,6 +13,11 @@ export class TipButtonsService {
 
   constructor() { }
 
+  /**
+   * Emits the index of the selected button
+   *
+   * @param selectedButton index of the selected button
+   */
   public selectButton(selectedButton: number) {
     this.selectedButtonSubject$.next(selectedButton);
   }

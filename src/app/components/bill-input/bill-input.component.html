@@ -1,6 +1,4 @@
 <form [formGroup]="billInputForm" class="input-container">
-  <div class="icon">
-    <img [src]="path" class="input-icon" alt="input-icon">
-  </div>
-  <input (keyup)="onKeyDown()" type="number" formControlName="billAmount" placeholder="0">
+  <div class="icon"><img [src]="path" class="input-icon" alt="input-icon"></div>
+  <input (keyup)="onKeyUp()" type="number" formControlName="billAmount" placeholder="0">
 </form>

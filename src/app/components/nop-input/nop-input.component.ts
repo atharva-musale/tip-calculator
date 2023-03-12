@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
 } from '@angular/core';
@@ -11,13 +12,17 @@ import {
   Subscription,
 } from 'rxjs';
 import {
+  filter,
+} from 'rxjs/operators';
+import {
   TipServiceService,
 } from 'src/app/services/tip-service/tip-service.service';
 
 @Component({
   selector: 'app-nop-input',
   templateUrl: './nop-input.component.html',
-  styleUrls: ['./nop-input.component.css']
+  styleUrls: ['./nop-input.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NopInputComponent {
   /**
@@ -26,12 +31,13 @@ export class NopInputComponent {
   private subscriptions: Subscription[] = [];
 
   /**
-   * path of the icon to be displayed in the input
+   * Path of the icon to be displayed in the input
    */
-  @Input() path!: string;
+  @Input()
+  public path = '';
 
   /**
-   * form-control for the nop-input form
+   * Form control for the nop-input form
    */
   public numberOfPeopleInputForm: FormGroup;
 
@@ -41,26 +47,22 @@ export class NopInputComponent {
     });
   }
 
-  ngOnInit(): void {
+  public ngOnInit() {
     this.subscriptions.push(
-      this._tipService.resetUi$.subscribe((resetButton) => {
-        if(resetButton) {
-          this.numberOfPeopleInputForm.reset();
-        }
-      })
+      this._tipService.resetUi$.pipe(filter(reset => reset)).subscribe(() => this.numberOfPeopleInputForm.reset())
     );
   }
 
   /**
    * Updates the number of people in service
    */
-  public onKeyDown() {
+  public onKeyUp() {
     this._tipService.updateNumberOfPeople(this.numberOfPeopleInputForm.value.numberOfPeople);
   }
 
-  /** Unsubscribes all the subscriptions */
-  ngOnDestroy(): void {
-    this.subscriptions.forEach( subscription => { subscription.unsubscribe(); });
+  public ngOnDestroy() {
+    /** Unsubscribes all the subscriptions */
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }

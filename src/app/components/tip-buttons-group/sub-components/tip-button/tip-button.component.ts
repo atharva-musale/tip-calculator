@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnDestroy,
@@ -8,6 +9,9 @@ import {
   Subscription,
 } from 'rxjs';
 import {
+  filter,
+} from 'rxjs/operators';
+import {
   TipButtonsService,
   TipServiceService,
 } from 'src/app/services/index';
@@ -15,7 +19,8 @@ import {
 @Component({
   selector: 'app-tip-button',
   templateUrl: './tip-button.component.html',
-  styleUrls: ['./tip-button.component.css']
+  styleUrls: ['./tip-button.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TipButtonComponent implements OnInit, OnDestroy {
   /**
@@ -51,16 +56,8 @@ export class TipButtonComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.subscriptions.push(
-      this._tipService.resetUi$.subscribe((resetButton) => {
-        if(resetButton) {
-          this.resetButtonState();
-        }
-      }),
-      this.tipButtonsService.selectedButton$.subscribe((selectedIndex) => {
-        if (selectedIndex !== this.index) {
-          this.resetButtonState();
-        }
-      })
+      this._tipService.resetUi$.pipe(filter(reset => reset)).subscribe(() =>this.resetButtonState()),
+      this.tipButtonsService.selectedButton$.pipe(filter(selectedIndex => selectedIndex !== this.index)).subscribe(() => this.resetButtonState())
     );
   }
 
@@ -86,8 +83,8 @@ export class TipButtonComponent implements OnInit, OnDestroy {
     this.currentState = this.initialState;
   }
 
-  /** Unsubscribes all the subscriptions */
   public ngOnDestroy() {
+    /** Unsubscribes all the subscriptions */
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }

@@ -32,7 +32,7 @@ export class TipServiceService {
   constructor() {}
 
   /**
-   * Updates the total and sends the new value to the subscribers
+   * Updates the total amount
    *
    * @param tot
    */
@@ -41,7 +41,7 @@ export class TipServiceService {
   }
 
   /**
-   * Updates the number of people and sends the new value to the subscribers
+   * Updates the number of people
    *
    * @param nop
    */
@@ -50,7 +50,7 @@ export class TipServiceService {
   }
 
   /**
-   * Updates the % tip and sends the new value to the subscribers
+   * Updates the tip percent
    *
    * @param tip
    */
@@ -59,7 +59,7 @@ export class TipServiceService {
   }
 
   /**
-   * resets everything
+   * Resets everything to initial state
    */
   public resetAll() {
     this.total.next(0);
