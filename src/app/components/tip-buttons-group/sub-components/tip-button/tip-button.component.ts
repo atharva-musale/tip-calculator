@@ -50,13 +50,13 @@ export class TipButtonComponent implements OnInit, OnDestroy {
    */
   private subscriptions: Subscription[] = [];
 
-  constructor(private _tipService: TipServiceService, private tipButtonsService: TipButtonsService) {
+  constructor(private tipService: TipServiceService, private tipButtonsService: TipButtonsService) {
     this.resetButtonState();
   }
 
   public ngOnInit() {
     this.subscriptions.push(
-      this._tipService.resetUi$.pipe(filter(reset => reset)).subscribe(() =>this.resetButtonState()),
+      this.tipService.resetUi$.pipe(filter(reset => reset)).subscribe(() => this.resetButtonState()),
       this.tipButtonsService.selectedButton$.pipe(filter(selectedIndex => selectedIndex !== this.index)).subscribe(() => this.resetButtonState())
     );
   }
@@ -67,12 +67,11 @@ export class TipButtonComponent implements OnInit, OnDestroy {
   public onClick() {
     if (this.currentState != 'active'){
       this.currentState = 'active';
-      this._tipService.updatePercentTip(+this.value);
+      this.tipService.updatePercentTip(+this.value);
       this.tipButtonsService.selectButton(this.index);
-    }
-    else {
+    } else {
       this.resetButtonState();
-      this._tipService.updatePercentTip(0);
+      this.tipService.updatePercentTip(0);
     }
   }
 

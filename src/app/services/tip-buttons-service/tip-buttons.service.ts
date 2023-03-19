@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {
+  Injectable,
+} from '@angular/core';
+import {
+  BehaviorSubject,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +18,7 @@ export class TipButtonsService {
   constructor() { }
 
   /**
-   * Emits the index of the selected button
+   * Emits index of the selected button
    *
    * @param selectedButton index of the selected button
    */
