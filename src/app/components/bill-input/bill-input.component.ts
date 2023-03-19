@@ -12,6 +12,8 @@ import {
   Subscription,
 } from 'rxjs';
 import {
+  debounce,
+  debounceTime,
   filter,
 } from 'rxjs/operators';
 import {
@@ -28,7 +30,8 @@ export class BillInputComponent {
   /**
    * Path of the icon to be displayed in the input
    */
-  @Input() path = '';
+  @Input()
+  public path = '';
 
   /**
    * Bill input form group
@@ -40,7 +43,7 @@ export class BillInputComponent {
    */
   private subscriptions: Subscription[] = [];
 
-  constructor(private _tipService: TipServiceService, private formBuilder: FormBuilder) {
+  constructor(private tipService: TipServiceService, private formBuilder: FormBuilder) {
     this.billInputForm = this.formBuilder.group({
       billAmount: [Validators.required]
     });
@@ -48,15 +51,21 @@ export class BillInputComponent {
 
   public ngOnInit() {
     this.subscriptions.push(
-      this._tipService.resetUi$.pipe(filter(resetUi => resetUi)).subscribe(() => this.billInputForm.reset())
+      this.tipService.resetUi$.pipe(filter(resetUi => resetUi)).subscribe(() => this.billInputForm.reset()),
+
+      this.billInputForm.valueChanges.pipe(debounceTime(400)).subscribe((formValue) => {
+        this.updateTotalBillAmount(formValue.billAmount);
+      })
     );
   }
 
   /**
    * Updates the total bill amount in the service
+   *
+   * @param billAmount total bill amount
    */
-  public onKeyUp() {
-    this._tipService.updateTotal(this.billInputForm.value.billAmount);
+  private updateTotalBillAmount(billAmount: number) {
+    this.tipService.updateTotal(billAmount);
   }
 
   /** Unsubscribes all the subscriptions */

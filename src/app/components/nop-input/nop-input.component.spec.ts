@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NopInputComponent } from './nop-input.component';
 
@@ -8,7 +9,8 @@ describe('NopInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NopInputComponent ]
+      declarations: [ NopInputComponent ],
+      imports: [FormsModule, ReactiveFormsModule],
     })
     .compileComponents();
   });
