@@ -4,7 +4,7 @@ import {
 } from '@angular/core/testing';
 import {
   TipButtonsService,
-  TipServiceService,
+  TipService,
 } from 'src/app/services';
 import {
   TipButtonsServiceFixture,
@@ -27,7 +27,7 @@ describe('TipButtonComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ TipButtonComponent ],
       providers:[
-        { provide: TipServiceService, useValue: tipServiceFixture },
+        { provide: TipService, useValue: tipServiceFixture },
         { provide: TipButtonsService, useValue: tipButtonServiceFixture }
       ]
     })
@@ -44,30 +44,19 @@ describe('TipButtonComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('resetButtonState should reset the state to initial state', () => {
-    component.resetButtonState();
-
-    expect(component.currentState).toBe(component.initialState);
-  });
-
-  it('onclick should reset button if the current state is active', () => {
-    component.currentState = 'active';
-    spyOn(component, 'resetButtonState').and.callThrough();
-    let button = fixture.debugElement.nativeElement.querySelector('button');
-    button.click();
-
-    expect(component.resetButtonState).toHaveBeenCalled();
-    expect(tipServiceFixture.updatePercentTip).toHaveBeenCalledWith(0);
-  });
-
-  it('onclick should set state to active if current state is not active', () => {
-    component.currentState = 'normal';
+  it('should call clickButton with the index on click', () => {
     let button = fixture.debugElement.nativeElement.querySelector('button');
     component.value = '5';
     button.click();
 
-    expect(component.currentState).toBe('active');
-    expect(tipButtonServiceFixture.selectButton).toHaveBeenCalledWith(0);
+    expect(tipButtonServiceFixture.clickButton).toHaveBeenCalledWith(0);
+  });
+
+  it('should update tip value when selected', () => {
+    component.index = 1;
+    component.value = '5';
+    tipButtonServiceFixture.selectedButton$.next(1);
+
     expect(tipServiceFixture.updatePercentTip).toHaveBeenCalledWith(5);
   });
 });

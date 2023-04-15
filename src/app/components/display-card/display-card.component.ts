@@ -13,7 +13,7 @@ import {
   map,
 } from 'rxjs/operators';
 import {
-  TipServiceService,
+  TipService,
 } from 'src/app/services/tip-service/tip-service.service';
 import {
   getTotalAmountPerPerson,
@@ -42,13 +42,13 @@ export class DisplayCardComponent implements OnInit, OnDestroy {
    */
   public templateData$?: Observable<TemplateData>
 
-  constructor(private _tipService: TipServiceService) { }
+  constructor(private tipService: TipService) { }
 
   public ngOnInit() {
     this.templateData$ = combineLatest([
-      this._tipService.totalValue,
-      this._tipService.nopValue,
-      this._tipService.tipValue
+      this.tipService.totalValue,
+      this.tipService.nopValue,
+      this.tipService.tipValue
     ]).pipe(map(([totalAmount, numberOfPeople, tipValue]) => {
       return {
         totalPerPerson: getTotalAmountPerPerson(totalAmount, numberOfPeople),

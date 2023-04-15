@@ -9,7 +9,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import {
-  TipServiceService,
+  TipService,
 } from 'src/app/services';
 import {
   TipServiceFixture,
@@ -27,7 +27,7 @@ describe('BillInputComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ BillInputComponent ],
       imports: [FormsModule, ReactiveFormsModule],
-      providers:[{ provide: TipServiceService, useValue: mockTipService }]
+      providers:[{ provide: TipService, useValue: mockTipService }]
     })
     .compileComponents();
   });

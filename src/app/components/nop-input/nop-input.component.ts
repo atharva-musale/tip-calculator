@@ -15,7 +15,7 @@ import {
   filter,
 } from 'rxjs/operators';
 import {
-  TipServiceService,
+  TipService,
 } from 'src/app/services/tip-service/tip-service.service';
 
 @Component({
@@ -41,7 +41,7 @@ export class NopInputComponent {
    */
   public numberOfPeopleInputForm: FormGroup;
 
-  constructor(private _tipService: TipServiceService, private _formBuilder: FormBuilder,) {
+  constructor(private tipService: TipService, private _formBuilder: FormBuilder,) {
     this.numberOfPeopleInputForm = this._formBuilder.group({
       numberOfPeople: [Validators.required]
     });
@@ -49,7 +49,7 @@ export class NopInputComponent {
 
   public ngOnInit() {
     this.subscriptions.push(
-      this._tipService.resetUi$.pipe(filter(reset => reset)).subscribe(() => this.numberOfPeopleInputForm.reset())
+      this.tipService.resetUi$.pipe(filter(reset => reset)).subscribe(() => this.numberOfPeopleInputForm.reset())
     );
   }
 
@@ -57,7 +57,7 @@ export class NopInputComponent {
    * Updates the number of people in service
    */
   public onKeyUp() {
-    this._tipService.updateNumberOfPeople(this.numberOfPeopleInputForm.value.numberOfPeople);
+    this.tipService.updateNumberOfPeople(this.numberOfPeopleInputForm.value.numberOfPeople);
   }
 
   public ngOnDestroy() {

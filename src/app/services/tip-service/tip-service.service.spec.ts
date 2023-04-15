@@ -8,15 +8,15 @@ import {
   take,
 } from 'rxjs/operators';
 import {
-  TipServiceService,
+  TipService,
 } from './tip-service.service';
 
-describe('TipServiceService', () => {
-  let service: TipServiceService;
+describe('TipService', () => {
+  let service: TipService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TipServiceService);
+    service = TestBed.inject(TipService);
   });
 
   it('should be created', () => {

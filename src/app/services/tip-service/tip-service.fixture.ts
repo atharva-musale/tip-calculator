@@ -17,10 +17,10 @@ export class TipServiceFixture implements Readonly<TipServiceFixture> {
   public resetAll: jasmine.Spy;
 
   constructor() {
-    this.resetUi$ = new ReplaySubject<boolean>(0);
-    this.totalValue = new ReplaySubject<number>(0);
+    this.resetUi$ = new ReplaySubject<boolean>(1);
+    this.totalValue = new ReplaySubject<number>(1);
     this.nopValue = new ReplaySubject<number>(1);
-    this.tipValue = new ReplaySubject<number>(0);
+    this.tipValue = new ReplaySubject<number>(1);
 
     this.updateTotal = jasmine.createSpy('updateTotal').and.callThrough();
     this.updateNumberOfPeople = jasmine.createSpy('updateNumberOfPeople').and.callThrough();

@@ -8,11 +8,13 @@ import {
 export class TipButtonsServiceFixture implements Readonly<TipButtonsServiceFixture> {
   public selectedButton$: ReplaySubject<number>;
 
-  public selectButton: jasmine.Spy;
+  public clickButton: jasmine.Spy;
+  public resetButtons: jasmine.Spy;
 
   constructor() {
     this.selectedButton$ = new ReplaySubject<number>(1);
 
-    this.selectButton = jasmine.createSpy('selectButton').and.callThrough();
+    this.clickButton = jasmine.createSpy('clickButton').and.callThrough();
+    this.resetButtons = jasmine.createSpy('resetButtons').and.callThrough();
   }
 }

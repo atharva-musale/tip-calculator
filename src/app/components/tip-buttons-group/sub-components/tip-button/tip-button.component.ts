@@ -6,14 +6,20 @@ import {
   OnInit,
 } from '@angular/core';
 import {
+  Observable,
   Subscription,
 } from 'rxjs';
 import {
+  distinctUntilChanged,
   filter,
+  map,
 } from 'rxjs/operators';
 import {
+  ButtonStateEnum,
+} from 'src/app/models';
+import {
   TipButtonsService,
-  TipServiceService,
+  TipService,
 } from 'src/app/services/index';
 
 @Component({
@@ -38,26 +44,28 @@ export class TipButtonComponent implements OnInit, OnDestroy {
   /**
    * Initial state of the button
    */
-  public initialState = 'normal';
+  public initialState = ButtonStateEnum.normal;
 
   /**
-   * To keep track of the current state
+   * True if the button is selected
    */
-  public currentState = '';
+  public isSelected$: Observable<boolean>;
 
   /**
    * List of subscriptions
    */
   private subscriptions: Subscription[] = [];
 
-  constructor(private tipService: TipServiceService, private tipButtonsService: TipButtonsService) {
-    this.resetButtonState();
+  constructor(private tipService: TipService, private tipButtonsService: TipButtonsService) {
+    this.isSelected$ = this.tipButtonsService.selectedButton$.pipe(map(selectedIndex => selectedIndex === this.index));
   }
 
   public ngOnInit() {
     this.subscriptions.push(
-      this.tipService.resetUi$.pipe(filter(reset => reset)).subscribe(() => this.resetButtonState()),
-      this.tipButtonsService.selectedButton$.pipe(filter(selectedIndex => selectedIndex !== this.index)).subscribe(() => this.resetButtonState())
+      this.isSelected$.pipe(
+        filter(isSelected => isSelected),
+        distinctUntilChanged()
+      ).subscribe(() => this.tipService.updatePercentTip(+this.value))
     );
   }
 
@@ -65,21 +73,7 @@ export class TipButtonComponent implements OnInit, OnDestroy {
    * OnClick event handler for the button
    */
   public onClick() {
-    if (this.currentState != 'active'){
-      this.currentState = 'active';
-      this.tipService.updatePercentTip(+this.value);
-      this.tipButtonsService.selectButton(this.index);
-    } else {
-      this.resetButtonState();
-      this.tipService.updatePercentTip(0);
-    }
-  }
-
-  /**
-   * Reset state
-   */
-  public resetButtonState() {
-    this.currentState = this.initialState;
+    this.tipButtonsService.clickButton(this.index);
   }
 
   public ngOnDestroy() {

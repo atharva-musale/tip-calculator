@@ -8,7 +8,7 @@ import {
 @Injectable({
   providedIn: 'root'
 })
-export class TipServiceService {
+export class TipService {
   /**
    * Total amount
    */

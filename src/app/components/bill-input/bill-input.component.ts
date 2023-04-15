@@ -17,7 +17,7 @@ import {
   filter,
 } from 'rxjs/operators';
 import {
-  TipServiceService,
+  TipService,
 } from 'src/app/services/tip-service/tip-service.service';
 
 @Component({
@@ -43,7 +43,7 @@ export class BillInputComponent {
    */
   private subscriptions: Subscription[] = [];
 
-  constructor(private tipService: TipServiceService, private formBuilder: FormBuilder) {
+  constructor(private tipService: TipService, private formBuilder: FormBuilder) {
     this.billInputForm = this.formBuilder.group({
       billAmount: [Validators.required]
     });
