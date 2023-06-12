@@ -12,4 +12,6 @@ export class AppComponent {
    * Title of the app
    */
   title = 'tip-calculator';
+
+  // To check pipeline
 }
