@@ -41,8 +41,8 @@ export class NopInputComponent {
    */
   public numberOfPeopleInputForm: FormGroup;
 
-  constructor(private tipService: TipService, private _formBuilder: FormBuilder,) {
-    this.numberOfPeopleInputForm = this._formBuilder.group({
+  constructor(private tipService: TipService, private formBuilder: FormBuilder,) {
+    this.numberOfPeopleInputForm = this.formBuilder.group({
       numberOfPeople: [Validators.required]
     });
   }

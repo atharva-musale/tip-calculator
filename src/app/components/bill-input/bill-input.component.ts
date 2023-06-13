@@ -53,6 +53,7 @@ export class BillInputComponent {
     this.subscriptions.push(
       this.tipService.resetUi$.pipe(filter(resetUi => resetUi)).subscribe(() => this.billInputForm.reset()),
 
+      // update the bill amount when user is done updating the text field
       this.billInputForm.valueChanges.pipe(debounceTime(400)).subscribe((formValue) => {
         this.updateTotalBillAmount(formValue.billAmount);
       })
@@ -68,8 +69,8 @@ export class BillInputComponent {
     this.tipService.updateTotal(billAmount);
   }
 
-  /** Unsubscribes all the subscriptions */
   public ngOnDestroy() {
+    /** Unsubscribes all the subscriptions */
     this.subscriptions.forEach( subscription => subscription.unsubscribe());
   }
 }

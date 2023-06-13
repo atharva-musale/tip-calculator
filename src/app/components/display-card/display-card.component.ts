@@ -61,7 +61,7 @@ export class DisplayCardComponent implements OnInit, OnDestroy {
    * Resets everything
    */
   public onReset() {
-    this._tipService.resetAll();
+    this.tipService.resetAll();
   }
 
   public ngOnDestroy() {
